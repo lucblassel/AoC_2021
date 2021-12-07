@@ -1,5 +1,6 @@
 input_ = "./test.txt"
 
+
 class Board:
     def __init__(self):
         self.board = None
@@ -9,14 +10,8 @@ class Board:
     @classmethod
     def from_string(cls, string):
         board = cls()
-        board.board = [
-            [int(x) for x in l.split()]
-            for l in string.strip().split("\n")
-        ]
-        board.checked = [
-            [False] * len(board.board[0])
-            for _ in board.board
-        ]
+        board.board = [[int(x) for x in l.split()] for l in string.strip().split("\n")]
+        board.checked = [[False] * len(board.board[0]) for _ in board.board]
 
         board.bingo = len(board.board)
 
@@ -35,7 +30,6 @@ class Board:
             else:
                 lines[i].append(str(val))
         return "\n".join("\t".join(l) for l in lines)
-
 
     def process_draw(self, draw):
         for i, j, val in self.traverse():
@@ -63,6 +57,7 @@ class Board:
                 score += val
         return score
 
+
 def main():
     boards = []
     with open(input_, "r") as lines:
@@ -88,13 +83,16 @@ def main():
                 print("Board wins:")
                 print(b)
                 print(score, score * val)
-            if won: break
-        if won: break
+            if won:
+                break
+        if won:
+            break
 
     if not won:
         print("no winner...")
         for i, b in enumerate(boards):
             print(f"\n{i}: \n{b}")
+
 
 if __name__ == "__main__":
     main()

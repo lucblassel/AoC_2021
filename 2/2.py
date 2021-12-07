@@ -1,5 +1,6 @@
 input_ = "./data.txt"
 
+
 class Submarine:
 
     _dirs = {
@@ -36,6 +37,7 @@ def parseline(line):
     direction, amount = line.strip().split()
     return direction, int(amount)
 
+
 def main():
     sub = Submarine()
 
@@ -45,6 +47,7 @@ def main():
             sub.move(direction, amount)
 
     sub.print_pos()
+
 
 if __name__ == "__main__":
     main()

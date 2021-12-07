@@ -2,12 +2,13 @@ import array
 
 input_ = "./test.txt"
 
+
 def inf_gen(val):
     while True:
         yield val
 
-class Line:
 
+class Line:
     def __init__(self, x1, y1, x2, y2):
         self.x1 = x1
         self.y1 = y1
@@ -17,8 +18,7 @@ class Line:
     @classmethod
     def from_string(cls, string):
         (x1, y1), (x2, y2) = [
-            [int(x) for x in seg.split(",")]
-            for seg in string.split(" -> ")
+            [int(x) for x in seg.split(",")] for seg in string.split(" -> ")
         ]
 
         return cls(x1, y1, x2, y2)
@@ -42,19 +42,14 @@ class Line:
 
 
 class Floor:
-
     def __init__(self, size_x, size_y):
         self.floor = [
-            array.array("B", [0 for _ in range(size_x)])
-            for _ in range(size_y)
+            array.array("B", [0 for _ in range(size_x)]) for _ in range(size_y)
         ]
 
     def __repr__(self):
         return "\n".join(
-            " ".join(
-                str(x) if x != 0 else "." for x in line
-            )
-            for line in self.floor
+            " ".join(str(x) if x != 0 else "." for x in line) for line in self.floor
         )
 
     def add_vent(self, x, y):
@@ -69,7 +64,6 @@ class Floor:
         return count
 
 
-
 def main():
     max_x, max_y = 0, 0
     lines = []
@@ -80,8 +74,7 @@ def main():
                 lines.append(line)
             max_x = max(max_x, max(line.x1, line.x2))
             max_y = max(max_y, max(line.y1, line.y2))
-    floor = Floor(max_x+1, max_y+1)
-
+    floor = Floor(max_x + 1, max_y + 1)
 
     for line in lines:
         for x, y in line.traverse():

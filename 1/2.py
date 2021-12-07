@@ -1,5 +1,6 @@
 input_ = "./data.txt"
 
+
 def main():
     n = 0
     elems = []

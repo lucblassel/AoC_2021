@@ -3,17 +3,17 @@ import array
 
 input_ = "./data.txt"
 
+
 class BitTable:
-    parser = {"1":1, "0":0}
+    parser = {"1": 1, "0": 0}
+
     def __init__(self):
         self.table = []
-        self.shape = (0,0)
+        self.shape = (0, 0)
 
     @staticmethod
     def _parse_line(line):
-        return array.array(
-            "b", [BitTable.parser.get(x) for x in line.strip()]
-        )
+        return array.array("b", [BitTable.parser.get(x) for x in line.strip()])
 
     @classmethod
     def from_file(cls, filename):
@@ -25,15 +25,10 @@ class BitTable:
         return table
 
     def _set_shape(self):
-        self.shape = (
-            len(self.table),
-            len(self.table[0])
-        )
+        self.shape = (len(self.table), len(self.table[0]))
 
     def getMostCommonValue(self, index):
-        return int(
-            sum(x[index] for x in self.table) >= self.shape[0] / 2
-        )
+        return int(sum(x[index] for x in self.table) >= self.shape[0] / 2)
 
     def filter(self, index, val):
         other = BitTable()
@@ -51,9 +46,8 @@ class BitTable:
 
     @staticmethod
     def to_decimal(bits):
-        return int(
-            "".join(str(b) for b in bits), 2
-        )
+        return int("".join(str(b) for b in bits), 2)
+
 
 def applyFilters(table, start_index, least=False):
     i = start_index
@@ -67,15 +61,17 @@ def applyFilters(table, start_index, least=False):
 
     return table
 
+
 def main():
     bt = BitTable.from_file(input_)
     c = bt.getMostCommonValue(0)
-    s1, s2 = bt.filter(0, c), bt.filter(0, 1-c)
+    s1, s2 = bt.filter(0, c), bt.filter(0, 1 - c)
     oxygen = applyFilters(s1, 1)
     co2 = applyFilters(s2, 1, True)
 
     o, c = oxygen.getNum(), co2.getNum()
     print(o, c, o * c)
+
 
 if __name__ == "__main__":
     main()

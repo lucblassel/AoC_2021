@@ -4,10 +4,11 @@ input_ = "./test.txt"
 
 max_days = 80
 
+
 def main():
 
     with open(input_, "r") as file:
-        ages = array.array("B",(int(x) for x in file.readlines()[0].split(",")))
+        ages = array.array("B", (int(x) for x in file.readlines()[0].split(",")))
 
     for day in range(max_days):
         to_add = 0
@@ -25,4 +26,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

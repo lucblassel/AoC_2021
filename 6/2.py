@@ -4,6 +4,7 @@ input_ = "./data.txt"
 
 max_days = 256
 
+
 def main():
     counter = [0 for x in range(9)]
 
@@ -18,6 +19,6 @@ def main():
 
     print(sum(counter))
 
+
 if __name__ == "__main__":
     main()
-
