@@ -16,6 +16,7 @@ NUMBERS = [
     {0, 1, 2, 3, 5, 6},
 ]
 
+
 def sort_word(string):
     return "".join(sorted(string))
 
@@ -31,7 +32,7 @@ def find_unique_segments(lengths):
     segments = dict()
     pairs = [[], [], [], []]
     for letter in lengths[2][0]:
-        segments[letter] = {2,5}
+        segments[letter] = {2, 5}
         pairs[0].append(letter)
     for letter in lengths[3][0]:
         if letter not in segments:
@@ -39,11 +40,11 @@ def find_unique_segments(lengths):
             pairs[1].append(letter)
     for letter in lengths[4][0]:
         if letter not in segments:
-            segments[letter] = {1,3}
+            segments[letter] = {1, 3}
             pairs[2].append(letter)
     for letter in lengths[7][0]:
         if letter not in segments:
-            segments[letter] = {4,6}
+            segments[letter] = {4, 6}
             pairs[3].append(letter)
     return segments, pairs
 
@@ -75,7 +76,7 @@ def get_numbers(patterns):
     lengths = get_lengths(patterns)
     segments, pairs = find_unique_segments(lengths)
 
-    resolved = {lengths[2][0]:1, lengths[4][0]:4, lengths[3][0]:7, lengths[7][0]:8}
+    resolved = {lengths[2][0]: 1, lengths[4][0]: 4, lengths[3][0]: 7, lengths[7][0]: 8}
 
     for l in [5, 6]:
         for pattern in lengths[l]:
@@ -93,7 +94,7 @@ def digits_to_number(digits):
     return total
 
 
-def  main():
+def main():
     total = 0
 
     with open(input_, "r") as file:

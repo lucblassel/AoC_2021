@@ -2,19 +2,16 @@ from collections import defaultdict
 
 input_ = "./data.txt"
 
-uniques = {
-    2: 1,
-    4: 4,
-    3: 7,
-    7: 8
-}
+uniques = {2: 1, 4: 4, 3: 7, 7: 8}
+
+
 def main():
     patterns, outputs = [], []
     counter = defaultdict(int)
 
     with open(input_, "r") as file:
         for line in file:
-            p,o = line.strip().split(" | ")
+            p, o = line.strip().split(" | ")
             patterns.append(p.split(" "))
             outputs.append(o.split(" "))
 
