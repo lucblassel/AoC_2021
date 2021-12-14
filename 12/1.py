@@ -18,6 +18,7 @@ def traverse(start, graph, visited, path):
             count += traverse(node, graph, v, p)
     return count
 
+
 def main():
     graph = defaultdict(list)
     with open(input_, "r") as file:

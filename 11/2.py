@@ -1,10 +1,11 @@
 input_ = "./data.txt"
 
+
 class SeaFloor:
     def __init__(self, x, y):
         self.shape = (x, y)
         self.octopi = []
-        self.flashed= []
+        self.flashed = []
         self.flashes = 0
 
     @classmethod
@@ -12,9 +13,7 @@ class SeaFloor:
         t = []
         with open(filename, "r") as file:
             for line in file:
-                t.append(
-                    [int(x) for x in line.strip()]
-                )
+                t.append([int(x) for x in line.strip()])
         floor = cls(len(t), len(t[0]))
         floor.octopi = t
         floor.reset_flashed()
@@ -22,8 +21,7 @@ class SeaFloor:
 
     def reset_flashed(self):
         self.flashed = [
-            [False for _ in range(self.shape[1])]
-            for _ in range(self.shape[0])
+            [False for _ in range(self.shape[1])] for _ in range(self.shape[0])
         ]
 
     def __repr__(self):
@@ -39,7 +37,7 @@ class SeaFloor:
         return "\n".join(s)
 
     def iterate_neighbors(self, x, y):
-        for i in range(x-1, x + 2):
+        for i in range(x - 1, x + 2):
             for j in range(y - 1, y + 2):
                 if i == x and j == y:
                     continue
@@ -50,19 +48,19 @@ class SeaFloor:
     def flash(self, x, y):
         self.flashed[x][y] = True
         self.flashes += 1
-        for i,j in self.iterate_neighbors(x, y):
+        for i, j in self.iterate_neighbors(x, y):
             self.octopi[i][j] += 1
             if self.octopi[i][j] > 9 and not self.flashed[i][j]:
-                self.flash(i,j)
+                self.flash(i, j)
 
     def process_iteration(self):
         for i, line in enumerate(self.octopi):
             for j, val in enumerate(line):
                 self.octopi[i][j] += 1
         for i, line in enumerate(self.octopi):
-            for j,val in enumerate(line):
+            for j, val in enumerate(line):
                 if val > 9 and not self.flashed[i][j]:
-                    self.flash(i,j)
+                    self.flash(i, j)
         if self.check_all_flashed():
             return True
         for i, line in enumerate(self.flashed):
@@ -78,6 +76,7 @@ class SeaFloor:
                     return False
         return True
 
+
 def main():
     floor = SeaFloor.from_file(input_)
     counter = 1
@@ -89,5 +88,5 @@ def main():
     print(floor, counter)
 
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     main()

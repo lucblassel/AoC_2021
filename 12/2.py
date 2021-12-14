@@ -6,9 +6,10 @@ input_ = "./data.txt"
 
 def copy_defaultdict(d):
     d_c = defaultdict(int)
-    for k,v in d.items():
+    for k, v in d.items():
         d_c[k] = v
     return d_c
+
 
 def traverse(start, graph, visited, path):
     count = 0
@@ -24,6 +25,7 @@ def traverse(start, graph, visited, path):
             p = [x for x in path]
             count += traverse(node, graph, v, p)
     return count
+
 
 def main():
     graph = defaultdict(list)
