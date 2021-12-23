@@ -25,10 +25,10 @@ These solutions are most likely not optimal / super efficient but they work 🙂
 | [16](https://adventofcode.com/2021/day/16) | [✅](./16/1.py) | [✅](./16/2.py) |
 | [17](https://adventofcode.com/2021/day/17) | [✅](./17/1.py) | [✅](./17/2.py) |
 | [18](https://adventofcode.com/2021/day/18) | [✅](./18/1.py) | [✅](./18/2.py) |
-| [19](https://adventofcode.com/2021/day/19) | [❌]()          | [❌]()          |
+| [19](https://adventofcode.com/2021/day/19) | ❌              | ❌              |
 | [20](https://adventofcode.com/2021/day/20) | [✅](./20/1.py) | [✅](./20/2.py) |
 | [21](https://adventofcode.com/2021/day/21) | [✅](./21/1.py) | [✅](./21/2.py) |
-| [22](https://adventofcode.com/2021/day/22) | [❌]()          | [❌]()          |
-| [23](https://adventofcode.com/2021/day/23) | [❌]()          | [❌]()          |
+| [22](https://adventofcode.com/2021/day/22) | ❌              | ❌              |
+| [23](https://adventofcode.com/2021/day/23) | ❌              | ❌              |
 | 24                                         |                 |                 |
 | 25                                         |                 |                 |
