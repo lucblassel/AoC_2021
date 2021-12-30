@@ -67,29 +67,27 @@ off x=-93533..-4276,y=-16170..68771,z=-104985..-24507\
 """
 
 
-class Cuboid(NamedTuple):
+class Cuboid:
     regex = re.compile(
         r"(.*) x=(-?\d+)\.\.(-?\d+),y=(-?\d+)\.\.(-?\d+),z=(-?\d+)\.\.(-?\d+)"
     )
 
-    state: str
-    x_s: int
-    x_e: int
-    y_s: int
-    y_e: int
-    z_s: int
-    z_e: int
+    def __init__(self, state, x_s, x_e, y_s, y_e, z_s, z_e):
+        self.state = state
+        self.x_s, self.x_e = x_s, x_e
+        self.y_s, self.y_e = y_s, y_e
+        self.z_s, self.z_e = z_s, z_e
 
     @property
-    def volume(self) -> int:
+    def volume(self):
         return (self.x_e - self.x_s) * (self.y_e - self.y_s) * (self.z_e - self.z_s)
 
     @property
-    def valid(self) -> bool:
+    def valid(self):
         return self.x_s < self.x_e and self.y_s < self.y_e and self.z_s < self.z_e
 
     @classmethod
-    def from_string(cls, string: str) -> Cuboid:
+    def from_string(cls, string):
         state, x_s_s, x_e_s, y_s_s, y_e_s, z_s_s, z_e_s = Cuboid.regex.match(
             string
         ).groups()
@@ -111,7 +109,7 @@ class Cuboid(NamedTuple):
             z_e + 1,
         )
 
-    def intersects(self, other: Cuboid) -> bool:
+    def intersects(self, other):
         return (
             self.x_s < other.x_e
             and self.x_e > other.x_s
@@ -121,7 +119,7 @@ class Cuboid(NamedTuple):
             and self.z_e > other.z_s
         )
 
-    def contains(self, other: Cuboid) -> bool:
+    def contains(self, other):
         return (
             self.x_s <= other.x_s
             and self.x_e >= other.x_e
@@ -131,7 +129,7 @@ class Cuboid(NamedTuple):
             and self.z_e >= other.z_e
         )
 
-    def substract(self, other: Cuboid) -> list[Cuboid]:
+    def substract(self, other):
 
         if not self.intersects(other):
             return [self]
@@ -153,14 +151,14 @@ class Cuboid(NamedTuple):
         return splits
 
 
-def reboot(string: str) -> int:
+def reboot(string):
     steps = [
         cuboid
         for line in string.split("\n")
         if (cuboid := Cuboid.from_string(line.strip())).valid
     ]
 
-    cuboids: list[Cuboid] = []
+    cuboids = []
     for cuboid_step in steps:
         cuboids = [
             split for cuboid in cuboids for split in cuboid.substract(cuboid_step)
