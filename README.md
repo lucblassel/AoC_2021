@@ -30,5 +30,5 @@ These solutions are most likely not optimal / super efficient but they work 🙂
 | [21](https://adventofcode.com/2021/day/21) | [✅](./21/1.py) | [✅](./21/2.py) |
 | [22](https://adventofcode.com/2021/day/22) | [✅](./22/1.py) | [✅](./22/2.py) |
 | [23](https://adventofcode.com/2021/day/23) | ❌              | ❌              |
-| [24](https://adventofcode.com/2021/day/24) | ❌              | ❌              |
+| [24](https://adventofcode.com/2021/day/24) | [✅](./24/1.py) | [✅](./24/2.py) |
 | [25](https://adventofcode.com/2021/day/25) | [✅](./25/1.py) | ❌              |
