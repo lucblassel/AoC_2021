@@ -1,5 +1,6 @@
-from itertools import combinations
 from functools import reduce
+from itertools import combinations
+
 import numpy as np
 
 
@@ -74,7 +75,6 @@ def get_relative_position(pair1, pair2):
 
 def locate_scanners(scanners):
     overlaps = get_overlaps(scanners)
-    # result = scanners[0].beacon_set()
 
     # Process the first scanner
     scanners[0].position = np.zeros(3, dtype=np.int32)
@@ -108,8 +108,6 @@ def locate_scanners(scanners):
                 pos += scanners[ref].position  # Add offset to ref scanner
                 scanners[other].rotation = r
                 scanners[other].position = pos
-
-                # result |= scanners[otr].beacon_set()
 
                 processed += 1
 
